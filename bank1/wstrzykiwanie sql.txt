@@ -1,0 +1,25 @@
+SQL Injection
+
+
+login :"login"' -- [login,apostrof,spacja,myœlnik,myœlnik,spacja] - gdy znany jest login tak¹ kombinacj¹ mo¿na zalogowac siê na konto(dwa myslniki pe³ni¹ rolê komentarza), pole has³a mo¿e pozostaæ puste
+haslo:
+
+
+
+login:
+haslo:' OR id=7 --[apostrof,spacja,OR, spacja, 1=1, spacja,myœlnik,myœlnik,spacja] - wpisanie tej formu³y powoduje zalogowanie siê na konto pierwszego gracza w bazie
+
+
+Wykonanie tych kombinacji w mojej (zmodyfikowanej) stronie daje mo¿liwoœæ zalogowanie siê na konto zwyk³ego u¿ytkownika oraz administratora, oraz 
+po zalogowaniu wykonanie przelewów.
+
+
+Mo¿na równie¿ próbowac zalogowaæ siê poprzez szukanie nazwy u¿ytkownika wpisuj¹c nastêpuj¹c¹ formu³e:
+login: 'OR user='nazwa_uzytkownika' -- [apostrof,spacja,OR,spacja,user='nazwa_uzytkownika',spacja,myslnik,myslnik,spacja] - w pole u¿ytkownika
+wpisujemy losow¹ nazwê u¿ytkownika dzieki temu metod¹ prób i b³êdów mo¿emy zalogowaæ siê na czyjeœ konto
+
+Mo¿na równie¿ zalogowaæ siê na konto poprzez podanie id, mo¿na to wykonaæ wpisuj¹c zamiast user='' id=jakas cyfra
+wtedy zalogujemy siê na konto gracza o podanym id
+
+
+W stronie wys³aniej jako 4 lista s¹ u¿yte zabezpieczenia blokuj¹ce wy¿ej wymienione zapytania.
